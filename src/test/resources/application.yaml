@@ -1,0 +1,13 @@
+quarkus:
+  datasource:
+    db-kind: postgresql
+    username: test
+    password: test
+    jdbc:
+      url:
+  hibernate-orm:
+    schema-management:
+      strategy: none
+  flyway:
+    migrate-at-start: true
+    locations: classpath:db/migration
