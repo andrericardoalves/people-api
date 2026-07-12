@@ -22,6 +22,7 @@ public class PeopleRepository implements PanacheRepository<PeopleEntity> {
     public void insertPeople(List<PeopleEntity> people) {
 
         for (PeopleEntity person : people) {
+
             entityManager.createQuery(
                 """
                     INSERT INTO PeopleEntity(firstName, lastName, email, nickname, dateOfBirth, createdAt, updatedAt)
@@ -38,7 +39,6 @@ public class PeopleRepository implements PanacheRepository<PeopleEntity> {
                 .setParameter("createdAt", person.getCreatedAt())
                 .setParameter("updatedAt", person.getUpdatedAt())
                 .executeUpdate();
-
         }
     }
 }

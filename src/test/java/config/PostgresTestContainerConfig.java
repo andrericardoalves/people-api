@@ -38,7 +38,7 @@ public class PostgresTestContainerConfig implements QuarkusTestResourceLifecycle
 
     private Map<String, String> createPostgresProperties() {
         final Map<String, String> dbProperties = new HashMap<>();
-        dbProperties.put("quarkus.datasource.jdbc.url", postgresContainer.getJdbcUrl());
+        dbProperties.put("quarkus.datasource.jdbc.url", postgresContainer.getJdbcUrl()+ "?rewriteBatchedInserts=true");
         dbProperties.put("quarkus.datasource.username", postgresContainer.getUsername());
         dbProperties.put("quarkus.datasource.password", postgresContainer.getPassword());
         return dbProperties;

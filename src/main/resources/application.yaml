@@ -4,10 +4,17 @@ quarkus:
     username: ${POSTGRES_USER}
     password: ${POSTGRES_PW}
     jdbc:
-      url: jdbc:postgresql://localhost:5432/people-db
+      url: jdbc:postgresql://localhost:5432/people-db?rewriteBatchedInserts=true
   hibernate-orm:
     schema-management:
       strategy: none
+    jdbc:
+      statement-fetch-size: 3
+      statement-batch-size: 3
+    log:
+      bind-parameters: false
+      sql: true
+      format-sql: true
   flyway:
     migrate-at-start: true
     locations: classpath:db/migration
